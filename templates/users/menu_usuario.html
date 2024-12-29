@@ -1,0 +1,77 @@
+{% extends "plantilla.html" %}
+{% block title %}Mis actividades{% endblock %}
+{% block content %}
+
+    <input type="hidden" id="nombre_usuario" name="nombre_usuario" value="{{nombre_usuario}}">
+    <div class="container">
+        Selecciona la actividad extraescolar para<span id="nombre_usuario" class="fw-bold"> {{nombre_usuario}}</span>
+  
+        <div class="row justify-content-center mt-3" onload="marcar_checkbox_deportes_asignados_usuario ();">
+            {% for deporte in todos_los_deportes %}
+                <div class="col-2">
+                    <label for="{{deporte[1]}}">{{deporte[1]}}</label>
+                    <input type="checkbox" id="{{deporte[1]}}" name="{{deporte[1]}}" value="{{deporte[1]}}"  class="form-check-label" onclick=checkbox_deporte_click(this)>
+                </div>
+            {% endfor %}
+
+        </div>
+  
+ 
+
+    
+        <h5 class="text-center mt-3"><a href="/menu_usuario/{{anio_actual}}/{{mes_actual-1}}"><i class="bi bi-skip-backward"></i></a>    {{mes_actual}}/{{anio_actual}}    <a href="/menu_usuario/{{anio_actual}}/{{mes_actual+1}}"><i class="bi bi-skip-forward"></i></a ></h5>
+            <table class="table table-bordered border-primary">
+            <thead>
+                <tr >
+                    <td class="text-center bg-primary text-white">Lunes</td>
+                    <td class="text-center bg-primary text-white">Martes</td>
+                    <td class="text-center bg-primary text-white">Miercoles</td>
+                    <td class="text-center bg-primary text-white">Jueves</td>
+                    <td class="text-center bg-primary text-white">Viernes</td>
+                    <td class="text-center bg-danger text-white">Sabado</td>
+                    <td class="text-center bg-danger text-white">Domingo</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for semana in monthcalendar %}
+                    <tr>
+                        {% for dia in semana %}
+                            <td><p class="text-center bg-warning h6">
+                                {% if dia==0 %}
+                                    
+                                {% else %}
+                        
+                                    <span class="border-end">{{dia}}</span>
+                                {% endif %}
+                            </p>
+                            {% for mes, dias in calendario[anio_actual].items() %}  
+                                {% if mes == mes_actual %}
+                                    {% for dia_calendario, info in dias.items() %}     
+                                        {% if dia_calendario == dia %}
+                                            <ul class="list-group">
+                                            {% for actividad in info["actividad"] %}
+                                                <li style="list-style-type: none;"><small class="texto_pequenio">{{actividad}}</small></li>
+                                            {% endfor %}
+                                            </ul>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+                            {% endfor %}
+                            </td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %} 
+            </tbody>                
+        </table>
+        </div>
+        <div class="container">
+            <ul class="list-group">
+            {% for mensaje_solapamiento in mensajes_solapamiento %}
+            <li class="list-group-item list-group-item-danger">{{ mensaje_solapamiento }}</li>
+            {% endfor %}
+            </ul>
+        </div>  
+    </div>
+
+
+    {% endblock %}

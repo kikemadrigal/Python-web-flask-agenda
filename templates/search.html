@@ -1,0 +1,35 @@
+{% extends "plantilla.html" %}
+{% block title %}Search{% endblock %}
+{% block content %}
+
+<div class="container text-center">
+    <div class="row">
+        <div class="col md-6 mx-auto mt-3">
+            <table class="table table-dark table-striped-columns">
+                <thead>
+                    <tr>        
+                        <th>nombre_deporte</th>
+                        <th>fecha_inicio</th>
+                        <th>fecha_fin</th>
+                        <th>hora_inicio</th>
+                        <th>hora_fin</th>
+                    </tr>
+                </thead>
+                    <tbody>
+                        {%for deporte in deportes %}
+                        <tr>
+                            <td>{{deporte[1]}}</td>
+                            <td>{{deporte[2]}}</td>
+                            <td>{{deporte[3]}}</td>
+                            <td>{{deporte[4]}}</td>
+                            <td>{{deporte[5]}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+            </table>
+        </div><!-- Final del col-->
+    </div><!-- Final del row-->
+</div>  
+
+
+{% endblock %}

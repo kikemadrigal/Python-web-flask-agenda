@@ -1,0 +1,75 @@
+{% extends "plantilla.html" %}
+{% block title %}Acerca{% endblock %}
+{% block content %}
+{% set usuario_a_borrar=-1 %}
+<div class="container text-center">
+    <a href="/adm/sports/form-create" class="btn btn-warning">Crear nuevo deporte</a>
+    <div class="row">
+        <div class="col md-6 mx-auto mt-3">
+            <table class="table table-dark table-striped-columns">
+                <thead>
+                    <tr>        
+                        <th>id_deporte</th>
+                        <th>nombre_deporte</th>
+                        <th>fecha_inicio</th>
+                        <th>fecha_fin</th>
+                        <th>hora_inicio</th>
+                        <th>hora_fin</th>
+                        <th>edit</th>
+                        <th>delete</th>
+                    </tr>
+                </thead>
+                    <tbody>
+                        {%for deporte in deportes %}
+                        <tr>
+                            <td>{{deporte[0]}}</td>
+                            <td>{{deporte[1]}}</td>
+                            <td>{{deporte[2]}}</td>
+                            <td>{{deporte[3]}}</td>
+                            <td>{{deporte[4]}}</td>
+                            <td>{{deporte[5]}}</td>
+                            <td>
+                                <form action="/adm/sports/form-update" method="post">
+                                <input type="hidden" name="id_deporte" value="{{deporte[0]}}">
+                                <button type="submit" class="btn btn-primary">editar</button> 
+                                </form>
+                            </td>
+                            <td>
+                                {% set deporte_a_borrar=deporte[0] %}
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{deporte_a_borrar}}">
+                                    Eliminar
+                                </button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal{{deporte_a_borrar}}" tabindex="-1" aria-labelledby="exampleModalLabel{{deporte_a_borrar}}" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel{{deporte_a_borrar}}">Borrar deporte</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <input type="text" value="¿Está seguro que desea borrarlo? " class="form-control" disabled>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                                            <form action="/adm/sports/delete" method="post">
+                                                <input type="hidden" name="id_deporte" value="{{deporte_a_borrar}}">
+                                                <button type="submit" class="btn btn-danger">Si</button> 
+                                            </form>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+            </table>
+        </div><!-- Final del col-->
+    </div><!-- Final del row-->
+</div>  
+
+
+  
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "plantilla.html" %}
+{% block title %}Inicio{% endblock %}
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-6 mx-auto p-5">
+                <h5 class="text-center">Register</h5>
+                <form action="/register" method="POST">
+                    <label for="nombre_usuario" class="form-label">Name</label>
+                    <input type="text" name="nombre_usuario" class="form-control mb-2" required >
+                    <label for="apellidos_usuario" class="form-label">Surname</label>
+                    <input type="text" name="apellidos_usuario" class="form-control mb-2" required >
+                    <hr>
+                    <label for="clave_usuario" class="form-label">Password</label>
+                    <input type="password" name="clave_usuario" class="form-control mb-2" required>   
+                    <label for="clave_usuario_repeat" class="form-label">Password repeat</label>                 <label for="clave_usuario" class="form-label">Password</label>
+                    <input type="password" name="clave_usuario_repeat" class="form-control mb-2" required>
+                    <!--<input type="text" name="dni" class="form-control mb-2" required>DNI
+                    <input type="date" name="fecha_nacimiento" class="form-control mb-2" required>Fecha Nacimiento
+                    <input type="text" name="direccion" class="form-control mb-2" required>Dirección
+                    <input type="text" name="email" class="form-control mb-2" required>Email-->
+                    <button type="submit" class="form-control btn btn-primary mb-2">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-6 mx-auto p-5">
+            <h5 class="text-center">Login</h5>
+            <form action="/login" method="POST">
+                <label for="nombre_usuario" class="form-label">Name</label>
+                <input type="text" name="nombre_usuario" class="form-control mb-2" required>
+                <label for="clave" class="form-label">Password</label>
+                <input type="password" name="clave" class="form-control mb-2" required>
+                <button type="submit" class="form-control btn btn-primary mb-2"> Entrar </button>
+            </form>
+        </div>
+    </div>
+</div>
+

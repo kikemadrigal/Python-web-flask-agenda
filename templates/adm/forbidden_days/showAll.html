@@ -1,0 +1,70 @@
+{% extends "plantilla.html" %}
+{% block title %}Usuario deporte{% endblock %}
+{% block content %}
+{% set deporte_usuario_a_borrar=-1 %}
+
+<div class="container text-center">
+    <a href="/adm/forbidden_days/form-create" class="btn btn-warning">Crear nuevo dia prohibido</a>
+    <div class="row">
+        <div class="col md-6 mx-auto mt-3">
+            <table class="table table-dark table-striped-columns">
+                <thead>
+                    <tr>        
+                        <th>id_dia_prohibido</th>
+                        <th>id_deporte</th>
+                        <th>fecha</th>
+                        <th>editar</th>
+                        <th>borrar</th>
+                    </tr>
+                </thead>
+                    <tbody>
+                        {%for dia_prohibido in dias_prohibidos %}
+                        <tr>
+                            <td>{{dia_prohibido[0]}}</td>
+                            <td>{{dia_prohibido[1]}}</td>
+                            <td>{{dia_prohibido[2]}}</td>
+                            <td>
+                                <form action="/adm/forbidden_days/form-update" method="post">
+                                <input type="hidden" name="id_dia_prohibido" value="{{dia_prohibido[0]}}">
+                                <button type="submit" class="btn btn-primary">editar</button> 
+                                </form>
+                            </td>
+                            <td>
+                                {% set dia_prohibido_a_borrar=dia_prohibido[0] %}
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{dia_prohibido_a_borrar}}">
+                                    Eliminar
+                                </button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal{{dia_prohibido_a_borrar}}" tabindex="-1" aria-labelledby="exampleModalLabel{{dia_prohibido_a_borrar}}" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel{{dia_prohibido_a_borrar}}">Borrar dia prohibido</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <input type="text" value="¿Está seguro que desea borrarlo? " class="form-control" disabled>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                                            <form action="/adm/forbidden_days/delete" method="post">
+                                                <input type="hidden" name="id_dia_prohibido" value="{{dia_prohibido_a_borrar}}">
+                                                <button type="submit" class="btn btn-danger">Si</button> 
+                                            </form>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+            </table>
+        </div><!-- Final del col-->
+    </div><!-- Final del row-->
+</div>  
+
+
+  
+
+{% endblock %}

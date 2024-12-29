@@ -1,0 +1,38 @@
+{% extends "plantilla.html" %}
+{% block title %}Acerca{% endblock %}
+{% block content %}
+    <div class="container">
+        <div id="carouselExampleIndicators" class="carousel slide bg-dark p-5" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="{{ url_for('static', filename='images/carrusel1.png') }}" class="d-block img-fluid" alt="image carrusel 1">
+              </div>
+              <div class="carousel-item">
+                <img src="{{ url_for('static', filename='images/carrusel2.png') }}" class="d-block img-fluid" alt="image carrusel 2">
+              </div>
+              <div class="carousel-item">
+                <img src="{{ url_for('static', filename='images/carrusel3.png') }}" class="d-block img-fluid" alt="image carrusel 3">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        <div class="m-2">
+            <p>Agenda es una herramienta que te permite crear turnos para una actividad en un rango de fechas y horarios.</p>
+            <p>En la página de inicio se ven todos los turnos de las actividades mezcladas.</p>
+            <p>Cuando se logea y aparece el menú del usuario puede añadirese a sus actividades, si las actividas se superponen se le avisa.</p>
+        </div>
+
+    
+{% endblock %}

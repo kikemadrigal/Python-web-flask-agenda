@@ -1,0 +1,39 @@
+{% extends "plantilla.html" %}
+{% block title %}Acerca{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-6 mx-auto p-5">
+            <h5 class="text-center">Admin update forbidden day</h5>
+            <form action="/adm/forbidden_days/update" method="post">
+                <label for="id_deporte" class="form-label">Deporte</label>
+                <select name="id_deporte" id="id_deporte" class="form-control mb-2" required>
+                    {% for deporte in deportes %}
+                        {% if deporte[0] == dia_prohibido[1] %}
+                            <option value="{{deporte[0]}}">{{deporte[1]}}</option>
+                        {% endif %}
+                    {% endfor %}
+                    {% for deporte in deportes %}
+                        {% if deporte[0] != dia_prohibido[1] %}
+                            <option value="{{deporte[0]}}">{{deporte[1]}}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+                <label for="fecha" class="form-label">Date</label>
+                <input type="date" name="fecha" id="fecha" class="form-control mb-2" value="{{dia_prohibido[2]}}" required>
+
+
+                <input type="hidden" name="id_dia_prohibido" id="id_deportes_usaurio" value="{{dia_prohibido[0]}}" >
+                <button type="submit" class="form-control mb-2 btn btn-primary">Acualizar</button>
+            </form>
+        </div>
+    </div>
+</div>   
+{% endblock %}
+"""
+"""
+id_deportes_usuario int auto_increment,
+id_deporte int,
+id_usuario int,
+"""
+"""

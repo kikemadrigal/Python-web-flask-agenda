@@ -1,0 +1,52 @@
+{% extends "plantilla.html" %}
+{% block title %}Acerca{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-6 mx-auto p-5">
+            <h5 class="text-center">Admin update user sport</h5>
+            <form action="/adm/user_sports/update" method="post">
+                <label for="id_deporte" class="form-label">Deporte</label>
+                <select name="id_deporte_nuevo" id="id_deporte" class="form-control mb-2" required>
+                    {% for tupla_deporte in deportes %}
+                        {% if tupla_deporte[0] == deporte[0] %}
+                            <option value="{{tupla_deporte[0]}}">{{tupla_deporte[1]}}</option>
+                        {% endif %}
+                    {% endfor %}
+                    {% for tupla_deporte in deportes %}
+                        {% if tupla_deporte[0] != deporte[0] %}
+                            <option value="{{tupla_deporte[0]}}">{{tupla_deporte[1]}}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+                <h6>Click para mostrar los usuarios</h6>
+                <label for="id_usuario" class="form-label">Usuario</label>
+                <select name="id_usuario_nuevo" id="id_usuario" class="form-control mb-2" required>
+                    {% for tupla_usuario in usuarios %}
+                        {% if tupla_usuario[0] == usuario[0] %}
+                            <option value="{{tupla_usuario[0]}}">{{tupla_usuario[1]}}</option>
+                        {% endif %}
+                    {% endfor %}
+                    {% for tupla_usuario in usuarios %}
+                        {% if tupla_usuario[0] != usuario[0] %}
+                            <option value="{{tupla_usuario[0]}}">{{tupla_usuario[1]}}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+
+
+                <input type="hidden" name="id_deporte_viejo" id="id_deporte" value="{{deporte[0]}}" >
+                <input type="hidden" name="id_usuario_viejo" id="id_deportes_usaurio" value="{{usuario[0]}}" >
+                <button type="submit" class="form-control mb-2 btn btn-primary">Acualizar</button>
+            </form>
+        </div>
+    </div>
+</div>   
+{% endblock %}
+"""
+"""
+id_deportes_usuario int auto_increment,
+id_deporte int,
+id_usuario int,
+"""
+"""

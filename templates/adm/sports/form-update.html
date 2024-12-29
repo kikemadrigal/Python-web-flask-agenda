@@ -1,0 +1,25 @@
+{% extends "plantilla.html" %}
+{% block title %}Acerca{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-6 mx-auto p-5">
+            <h5 class="text-center">Admin update sport</h5>
+            <form action="/adm/sports/update" method="post">
+                <label for="nombre_deporte" class="form-label">nombre_deporte</label>
+                <input type="text" name="nombre_deporte" id="nombre_deporte"class="form-control mb-2" {% if deporte[1] %} value="{{deporte[1]}}" {% endif %} required >
+                <label for="fecha_inicio" class="form-label">fecha_inicio </label>
+                <input type="date" name="fecha_inicio" id="fecha_inicio" class="form-control mb-2" {% if deporte[2] %} value="{{deporte[2]}}" {% endif %} required>
+                <label for="fecha_fin" class="form-label">fecha_fin</label>
+                <input type="date" name="fecha_fin" id="fecha_fin" class="form-control mb-2" {% if deporte[3] %} value="{{deporte[3]}}" {% endif %} required>
+                <label for="hora_inicio" class="form-label">hora_inicio</label>
+                <input type="time" name="hora_inicio" id="hora_inicio" class="form-control mb-2" {% if deporte[4] %} value="{{deporte[4]}}" {% endif %} required>
+                <label for="hora_fin" class="form-label">hora_fin</label>
+                <input type="time" name="hora_fin" id="hora_fin" class="form-control mb-2" {% if deporte[5] %} value="{{deporte[5]}}" {% endif %} required>
+                <input type="hidden" name="id_deporte" id="id_deporte" value="{{deporte[0]}}" >
+                <button type="submit" class="form-control mb-2 btn btn-primary">Acualizar</button>
+            </form>
+        </div>
+    </div>
+</div>   
+{% endblock %}

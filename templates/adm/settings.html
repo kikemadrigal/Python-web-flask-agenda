@@ -1,0 +1,96 @@
+{% extends "plantilla.html" %}
+{% block title %}About{% endblock %}
+{% block content %}
+<div class="container">
+    <br><br>
+    <!--botones de archivos -->
+    <div class="row">
+        <div class="col mt-3">
+            <a href="/adm/csv_crear_backup" class="btn btn-success">Hacer copia de seguridad en csv</a>
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#Recovery-csv">
+                Recuperar copia de seguridad csv
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="Recovery-csv" tabindex="-1" aria-labelledby="Recovery-csvLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="Recovery-csvLabel">Recovery-csv</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Se borrarán todos los datos, ¿estás seguro de que deseas seguir?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="modal-footer">
+                            <form action="/adm/csv_leer" method="post" enctype="multipart/form-data">
+                                <input type="file" name="file_csv" id="file_csv" class="form-control mb-2" required>
+                                <button class="btn btn-success form-control">Al ataqueee!</button>
+                            </form>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col mt-3">
+            <a href="/adm/json_crear_backup" class="btn btn-success">Crear copia de seguridad en json</a>
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#Recovery-json">
+            Recuperar copia de seguridad json
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="Recovery-json" tabindex="-1" aria-labelledby="Recovery-jsonLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="Recovery-jsonLabel">Recovery-json</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Se borrarán todos los datos, ¿estás seguro de que deseas seguir?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <form action="/adm/json_leer" method="post" enctype="multipart/form-data">
+                            <input type="file" name="file_json" id="file_json" class="form-control mb-2" required>
+                            <button class="btn btn-success form-control">Al ataqueee!</button>
+                        </form>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Botones reset database-->
+    <div class="row">
+        <div class="col md-6 mt-3">
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#reset">
+                Resetear base de datos
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="reset" tabindex="-1" aria-labelledby="resetLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="resetLabel">Reset database</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Se borrarán todos los datos, ¿estás seguro de que deseas seguir?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <form action="/adm/database_reset" method="get" >
+                            <button class="btn btn-success form-control">Al ataqueee!</button>
+                        </form>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

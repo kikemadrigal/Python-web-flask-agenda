@@ -1,0 +1,14 @@
+-Conectar y desconectar la base de datos en cada petición
+-Arregla la validación del user sports menu create que permite ingresar el mismo id_deporte con el mismo id_usuario y uno vacío
+-El formulario de crete usaer no funciona bien por las claves
+-Cuando el usuario no existe te dice que la clave es incorrecta
+-contraseña encriptada
+-Pasa a las vista de actualizar y eleminar las variables cuando se rechazan
+-Intenta que funcione en render, mira porque no funciona el contenedro cuando descomentas en data.database mysqlClient=MysqlClient() en render
+-documentar funciones
+-¿paginación?
+-¿Cambiar el usuario para que tengo dni, fecha de nacimiento y dirección y ponerle validaciones?
+
+¿MVC?
+-Trabajar con la clase usuario, deportes,¿etc?
+-modelo¿heredar de la clase model?, vista, controlador

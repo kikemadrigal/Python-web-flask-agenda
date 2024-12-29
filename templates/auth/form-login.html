@@ -1,0 +1,20 @@
+{% extends "plantilla.html" %}
+{% block title %}SGA - Login{% endblock %}
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-6 mx-auto p-5">
+                <h5 class="text-center">Login</h5>
+                <form action="/login" method="POST">
+                    <label for="nombre_usuario" class="form-label">Name</label>
+                    <input type="text" name="nombre_usuario" class="form-control mb-2" required>
+                    <label for="clave" class="form-label">Password</label>
+                    <input type="password" name="clave" class="form-control mb-2" required>
+                    <button type="submit" class="form-control btn btn-primary mb-2"> Entrar </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

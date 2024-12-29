@@ -1,0 +1,19 @@
+{% extends "plantilla.html" %}
+{% block title %}Editar{% endblock %}
+{% block content %}
+
+<div class="container">
+    <h2>Crear usuario</h2>
+    <form action="/modificar_usuario/{{usuario[0]}}" method="POST">
+        <label>Introduce el email para recuperara</label>
+        <input type="text" name="email" value="{{ usuario[1] }}">
+        <label>Apellidos</label>
+        <input type="text" name="apellidos" value="{{ usuario[2] }}">
+        <label>Fecha Nacimiento</label>
+        <input type="date" name="fecha_nac" value="{{ usuario[3] }}">
+        <button type="submit">Actualizar</button>
+    </form>
+    <a href="/">Volver</a>
+</div>
+
+{% endblock %}

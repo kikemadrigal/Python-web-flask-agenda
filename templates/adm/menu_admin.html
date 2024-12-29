@@ -1,0 +1,19 @@
+{% extends "plantilla.html" %}
+{% block title %}About{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center text-center">
+        <div class="col m-2"><a href="/adm/users/showAll"><img src="{{ url_for('static', filename='images/personas.png') }}"  width="200" alt="users management" class="img-fluid"><br>User management</a></div>
+        <div class="col m-2"><a href="/adm/sports/showAll"><img src="{{ url_for('static', filename='images/actividades.png') }}" width="200" alt="activities management" class="img-fluid"><br>Sports management</a></div>
+        <div class="col m-2"><a href="/adm/user_sports/showAll"><img src="{{ url_for('static', filename='images/actividades_personas.png') }}" width="200" alt="person-sports management" class="img-fluid"><br>User-Sports management</a></div>
+        
+    </div>
+    <div class="row justify-content-center text-center">
+
+        <div class="col m-2"><a href="/adm/forbidden_days/showAll"><img src="{{ url_for('static', filename='images/dias_prohibidos.png') }}" width="200"  alt="forhhiben days management" class="img-fluid"><br>forbidden days management</a></div>
+        <div class="col m-2"><a href="/adm/settings"><img src="{{ url_for('static', filename='images/settings.png') }}" width="200" alt="settings" class="img-fluid"><br>Settings</a></div>
+
+    </div>
+    
+</div>
+{% endblock %}

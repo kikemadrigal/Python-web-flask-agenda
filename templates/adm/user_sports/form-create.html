@@ -1,0 +1,31 @@
+{% extends "plantilla.html" %}
+{% block title %}Acerca{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-6 mx-auto p-5">
+                <h5 class="text-center">Admin create new user sport</h5>
+                <h6>Click para mostrar los deportes</h6>
+                <form action="/adm/user_sports/create" method="post">
+                    <label for="id_deporte" class="form-label">Deporte</label>
+                    <select name="id_deporte" id="id_deporte" class="form-control mb-2" required>
+                        <option value="0">Ninguno</option>
+                        {% for deporte in deportes %}
+                            <option value="{{deporte[0]}}">{{deporte[1]}}</option>
+                        {% endfor %}
+                    </select>
+                    <h6>Click para mostrar los usuarios</h6>
+                    <label for="id_deporte" class="form-label">Usuario</label>
+                    <select name="id_usuario" id="id_usuario" class="form-control mb-2" required>
+                        <option value="0">Ninguno</option>
+                        {% for usuario in usuarios %}
+                            <option value="{{usuario[0]}}">{{usuario[1]}}</option>
+                        {% endfor %}
+                    </select>
+
+                    <button type="submit" class="form-control mb-2 btn btn-primary">Crear</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

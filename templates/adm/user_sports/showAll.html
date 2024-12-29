@@ -1,0 +1,71 @@
+{% extends "plantilla.html" %}
+{% block title %}Usuario deporte{% endblock %}
+{% block content %}
+{% set deporte_usuario_a_borrar=-1 %}
+
+<div class="container text-center">
+    <a href="/adm/user_sports/form-create" class="btn btn-warning">Crear nuevo usuario deporte</a>
+    <div class="row">
+        <div class="col md-6 mx-auto mt-3">
+            <table class="table table-dark table-striped-columns">
+                <thead>
+                    <tr>        
+                        <th>id_deporte</th>
+                        <th>id_usuario</th>
+                        <th>editar</th>
+                        <th>borrar</th>
+                    </tr>
+                </thead>
+                    <tbody>
+                        {%for deporte_usuario in deportes_usuario %}
+                            {% set id_deporte_seleccionado=deporte_usuario[0] %}
+                            {% set id_usuario_seleccionado=deporte_usuario[1] %}
+                            <tr>
+                                <td>{{deporte_usuario[0]}}</td>
+                                <td>{{deporte_usuario[1]}}</td>
+                                <td>
+                                    <form action="/adm/user_sports/form-update" method="post">
+                                    <input type="hidden" name="id_deporte" value="{{id_deporte_seleccionado}}">
+                                    <input type="hidden" name="id_usuario" value="{{id_usuario_seleccionado}}">
+                                    <button type="submit" class="btn btn-primary">editar</button> 
+                                    </form>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{id_deporte_seleccionado}}">
+                                        Eliminar
+                                    </button>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal{{id_deporte_seleccionado}}" tabindex="-1" aria-labelledby="exampleModalLabel{{id_deporte_seleccionado}}" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel{{id_deporte_seleccionado}}">Borrar deporte_usuario</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <input type="text" value="¿Está seguro que desea borrarlo? " class="form-control" disabled>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                                                <form action="/adm/user_sports/delete" method="post">
+                                                    <input type="hidden" name="id_deporte" value="{{id_deporte_seleccionado}}">
+                                                    <input type="hidden" name="id_usuario" value="{{id_usuario_seleccionado}}">
+                                                    <button type="submit" class="btn btn-danger">Si</button> 
+                                                </form>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+            </table>
+        </div><!-- Final del col-->
+    </div><!-- Final del row-->
+</div>  
+
+
+  
+
+{% endblock %}

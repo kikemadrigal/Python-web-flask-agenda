@@ -1,0 +1,23 @@
+{% extends "plantilla.html" %}
+{% block title %}Acerca{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-6 mx-auto p-5">
+            <h5 class="text-center">Admin update user</h5>
+            <form action="/adm/users/update" method="post">
+                <label for="nombre_usuario" class="form-label">Nombre usaurio</label>
+                <input type="text" name="nombre_usuario" id="nombre_usuario"class="form-control mb-2" {% if usuario[1] %} value="{{usuario[1]}}" {% endif %} required >
+                <label for="apellido_usuario" class="form-label">apellidos </label>
+                <input type="text" name="apellido_usuario" id="apellido_usuario" class="form-control mb-2" {% if usuario[3] %} value="{{usuario[3]}}" {% endif %} required>
+                <label for="clave_usuario" class="form-label">clave</label>
+                <input type="password" name="clave_usuario" id="clave_usuario" class="form-control mb-2" {% if usuario[2] %} value="{{usuario[2]}}" {% endif %} required>
+                <label for="clave_usuario_repeat" class="form-label">Repite la clave</label>
+                <input type="password" name="clave_usuario_repeat" id="clave_usuario_repeat" class="form-control mb-2" {% if usuario[2] %} value="{{usuario[2]}}" {% endif %} required>
+                <input type="hidden" name="id_usuario" id="id_usuario" value="{{usuario[0]}}" >
+                <button type="submit" class="form-control mb-2 btn btn-primary">Acualizar</button>
+            </form>
+        </div>
+    </div>
+</div>   
+{% endblock %}
